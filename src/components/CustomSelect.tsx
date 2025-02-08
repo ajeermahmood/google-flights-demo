@@ -11,6 +11,7 @@ interface CustomSelectProps {
   onChange: (event: SelectChangeEvent) => void;
   options: { label: any; value: any }[];
   className?: string;
+  startAdornment?: React.JSX.Element;
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -18,6 +19,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   onChange,
   options,
   className,
+  startAdornment,
 }) => {
   return (
     <FormControl
@@ -25,9 +27,17 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       sx={{
         m: 1,
         margin: "0 !important",
+        "& .MuiInputBase-root": {
+          "& .MuiSelect-select": {
+            paddingRight: "20px !important",
+          },
+        },
         "&:hover": {
           backgroundColor: (theme) => theme.palette.action.hover,
           borderRadius: "4px",
+          "& .MuiSelect-icon": {
+            color: "#e8eaed",
+          },
         },
         "& .MuiInput-underline:before": { borderBottom: "none" },
         "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
@@ -39,7 +49,11 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
             borderBottom: "2px solid",
             borderColor: (theme) => theme.palette.primary.main,
           },
+          "& .MuiSelect-icon": {
+            color: "#8ab4f8",
+          },
         },
+
         transition: "background-color 0.2s ease-in-out",
       }}
     >
@@ -47,11 +61,22 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         value={value}
         onChange={onChange}
         size="small"
-        className={`w-full px-4 pt-2 pb-1 ${className}`}
+        className={`w-full px-3 pt-[6px] pb-[3px] ${className}`}
+        startAdornment={startAdornment}
         sx={{
           "& .MuiSvgIcon-root": {
-            right: 10,
+            color: "#9aa0a6",
+            marginTop: "-6px",
+            fontSize: "20px",
+            marginRight: "8px",
           },
+          "& .MuiSelect-icon": {
+            right: 0,
+            top: 12,
+            fontSize: "20px",
+          },
+          fontSize: "14px",
+          color: "#bdc1c6",
         }}
       >
         {options.map((option) => (

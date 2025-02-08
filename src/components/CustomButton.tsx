@@ -1,14 +1,14 @@
 import { Button } from "@mui/material";
 import { ReactNode } from "react";
 
-interface CustomAppBarButtonProps {
-  icon: ReactNode;
+interface CustomButtonProps {
+  icon?: ReactNode;
   text: string;
   active: boolean;
   onClick?: () => void;
 }
 
-const CustomAppBarButton: React.FC<CustomAppBarButtonProps> = ({
+const CustomButton: React.FC<CustomButtonProps> = ({
   icon,
   text,
   active,
@@ -18,7 +18,7 @@ const CustomAppBarButton: React.FC<CustomAppBarButtonProps> = ({
     <Button
       color="inherit"
       variant="outlined"
-      startIcon={icon}
+      startIcon={icon ? icon : null}
       sx={{
         color: active ? "#8ab4f8" : "unset",
         borderRadius: "20px",
@@ -38,4 +38,4 @@ const CustomAppBarButton: React.FC<CustomAppBarButtonProps> = ({
   );
 };
 
-export default CustomAppBarButton;
+export default CustomButton;

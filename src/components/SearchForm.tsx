@@ -16,7 +16,9 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/LocalizationProvider";
 import CustomSelect from "./CustomSelect";
 import SearchIcon from "@mui/icons-material/Search";
-// import AdapterDayjs from "dayjs";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import SyncAltIcon from "@mui/icons-material/SyncAlt";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
 const locations = ["Dubai", "Abu Dhabi", "Ras Al Khaimah", "Al Ain"];
 
@@ -31,18 +33,24 @@ export default function SearchForm() {
     //   });
   }, []);
 
+  const [ticketType, setTicketType] = useState<string>("one-way");
+  const [passengersCount, setPassengersCount] = useState<number>(1);
+  const [seatingClass, setSeatingClass] = useState<string>("economy");
   const [from, setFrom] = useState<string>("");
   const [to, setTo] = useState<string>("");
 
   return (
     <div className="flex flex-col gap-3">
       {/* Trip Type & Passengers/Class Row */}
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         <Grid item xs={12} sm="auto">
           <CustomSelect
-            value="one-way"
+            startAdornment={
+              ticketType === "one-way" ? <ArrowRightAltIcon /> : <SyncAltIcon />
+            }
+            value={ticketType}
             className="w-full"
-            onChange={() => {}}
+            onChange={(e) => setTicketType(e.target.value)}
             options={[
               { label: "One Way", value: "one-way" },
               { label: "Round Trip", value: "round-trip" },
@@ -52,23 +60,29 @@ export default function SearchForm() {
 
         <Grid item xs={12} sm="auto">
           <CustomSelect
-            value={1}
+            value={passengersCount}
             className="w-full"
-            onChange={() => {}}
+            startAdornment={<PersonOutlineIcon />}
+            onChange={(e) => setPassengersCount(Number(e.target.value))}
             options={[
               { label: 1, value: 1 },
               { label: 2, value: 2 },
               { label: 3, value: 3 },
               { label: 4, value: 4 },
+              { label: 5, value: 5 },
+              { label: 6, value: 6 },
+              { label: 7, value: 7 },
+              { label: 8, value: 8 },
+              { label: 9, value: 9 },
             ]}
           />
         </Grid>
 
         <Grid item xs={12} sm="auto">
           <CustomSelect
-            value="economy"
+            value={seatingClass}
             className="w-full"
-            onChange={() => {}}
+            onChange={(e) => setSeatingClass(e.target.value)}
             options={[
               { label: "Economy", value: "economy" },
               { label: "Business", value: "business" },
@@ -124,7 +138,7 @@ export default function SearchForm() {
           }}
           startIcon={<SearchIcon />}
         >
-          Search
+          Explore
         </Button>
       </div>
     </div>
