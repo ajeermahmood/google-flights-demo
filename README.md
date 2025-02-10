@@ -2,7 +2,7 @@
 
 A modern flight search interface replicating Google Flights' functionality, built with **Next.js 15** and powered by Material UI's elegant components. Demonstrates real-time flight search capabilities with responsive design.
 
-![Preview](https://drive.google.com/file/d/1tqK4CnC3BgRG6JYMa1ebe5uJe59oKLi9/preview) 
+![Preview](https://drive.google.com/uc?export=view&id=1tqK4CnC3BgRG6JYMa1ebe5uJe59oKLi9) 
 
 ## 🚀 Features
 
