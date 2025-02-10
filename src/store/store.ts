@@ -1,11 +1,10 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-// import patientReducer from "./features/patientSlice";
+import flightsDataReducer from "./slices/flightsDataSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      flight: createSlice({ name: "flight", initialState: "", reducers: {} })
-        .reducer,
+      flightsData: flightsDataReducer,
     },
   });
 };

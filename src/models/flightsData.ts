@@ -1,95 +1,170 @@
 export interface FlightsData {
   status: boolean;
   timestamp: number;
+  sessionId: string;
   data: Data;
 }
 
 export interface Data {
-  itinerary: Itinerary;
-  pollingCompleted: boolean;
+  context: Context;
+  itineraries: Itinerary[];
+  messages: any[];
+  filterStats: FilterStats;
+  flightsSessionId: string;
+  destinationImageUrl: string;
+}
+
+export interface Context {
+  status: string;
+  totalResults: number;
+}
+
+export interface FilterStats {
+  duration: Duration;
+  airports: FilterStatsAirport[];
+  carriers: Carrier[];
+  stopPrices: StopPrices;
+}
+
+export interface FilterStatsAirport {
+  city: string;
+  airports: AirportAirport[];
+}
+
+export interface AirportAirport {
+  id: string;
+  entityId: string;
+  name: string;
+}
+
+export interface Carrier {
+  id: number;
+  alternateId: string;
+  logoUrl: string;
+  name: string;
+}
+
+export interface Duration {
+  min: number;
+  max: number;
+  multiCityMin: number;
+  multiCityMax: number;
+}
+
+export interface StopPrices {
+  direct: Direct;
+  one: One;
+  twoOrMore: One;
+}
+
+export interface Direct {
+  isPresent: boolean;
+}
+
+export interface One {
+  isPresent: boolean;
+  formattedPrice: string;
 }
 
 export interface Itinerary {
+  id: string;
+  price: Price;
   legs: Leg[];
-  pricingOptions: PricingOption[];
-  isTransferRequired: boolean;
-  destinationImage: string;
-  operatingCarrierSafetyAttributes: OperatingCarrierSafetyAttribute[];
-  flexibleTicketPolicies: any[];
+  isSelfTransfer: boolean;
+  isProtectedSelfTransfer: boolean;
+  farePolicy: FarePolicy;
+  fareAttributes: FareAttributes;
+  tags?: string[];
+  isMashUp: boolean;
+  hasFlexibleOptions: boolean;
+  score: number;
+}
+
+export interface FareAttributes {}
+
+export interface FarePolicy {
+  isChangeAllowed: boolean;
+  isPartiallyChangeable: boolean;
+  isCancellationAllowed: boolean;
+  isPartiallyRefundable: boolean;
 }
 
 export interface Leg {
   id: string;
-  origin: Destination;
-  destination: Destination;
-  segments: Segment[];
-  duration: number;
+  origin: LegDestination;
+  destination: LegDestination;
+  durationInMinutes: number;
   stopCount: number;
+  isSmallestStops: boolean;
   departure: Date;
   arrival: Date;
-  dayChange: number;
+  timeDeltaInDays: number;
+  carriers: Carriers;
+  segments: Segment[];
 }
 
-export interface Destination {
+export interface Carriers {
+  marketing: Carrier[];
+  operationType: string;
+  operating?: Carrier[];
+}
+
+export interface LegDestination {
   id: string;
+  entityId: string;
   name: string;
   displayCode: string;
   city: string;
+  country: string;
+  isHighlighted: boolean;
 }
 
 export interface Segment {
   id: string;
-  origin: Destination;
-  destination: Destination;
-  duration: number;
-  dayChange: number;
-  flightNumber: string;
+  origin: SegmentDestination;
+  destination: SegmentDestination;
   departure: Date;
   arrival: Date;
+  durationInMinutes: number;
+  flightNumber: string;
   marketingCarrier: TingCarrier;
   operatingCarrier: TingCarrier;
 }
 
-export interface TingCarrier {
-  id: string;
-  name: string;
+export interface SegmentDestination {
+  flightPlaceId: string;
   displayCode: string;
-  displayCodeType: string;
-  logo: string;
-  altId: string;
-}
-
-export interface OperatingCarrierSafetyAttribute {
-  carrierID: string;
-  carrierName: string;
-  faceMasksCompulsory: null;
-  aircraftDeepCleanedDaily: null;
-  attendantsWearPPE: null;
-  cleaningPacksProvided: null;
-  foodServiceChanges: null;
-  safetyUrl: null;
-}
-
-export interface PricingOption {
-  agents: Agent[];
-  totalPrice: number;
-}
-
-export interface Agent {
-  id: string;
+  parent: Parent;
   name: string;
-  isCarrier: boolean;
-  bookingProposition: string;
-  url: string;
-  price: number;
-  rating: Rating;
-  updateStatus: string;
-  segments: Segment[];
-  isDirectDBookUrl: boolean;
-  quoteAge: number;
+  type: DestinationType;
+  country: string;
 }
 
-export interface Rating {
-  value: number;
-  count: number;
+export interface Parent {
+  flightPlaceId: string;
+  displayCode: string;
+  name: string;
+  type: ParentType;
+}
+
+export enum ParentType {
+  City = "City",
+}
+
+export enum DestinationType {
+  Airport = "Airport",
+}
+
+export interface TingCarrier {
+  id: number;
+  name: string;
+  alternateId: string;
+  allianceId: number;
+  displayCode: string;
+}
+
+export interface Price {
+  raw: number;
+  formatted: string;
+  pricingOptionId: string;
 }

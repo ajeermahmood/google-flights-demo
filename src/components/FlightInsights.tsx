@@ -1,3 +1,4 @@
+"use client";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import NotificationAddOutlinedIcon from "@mui/icons-material/NotificationAddOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";

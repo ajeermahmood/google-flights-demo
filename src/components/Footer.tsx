@@ -1,3 +1,4 @@
+"use client";
 import LanguageIcon from "@mui/icons-material/Language";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";

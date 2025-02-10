@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -127,7 +128,9 @@ export default function CityCarousel() {
             "&:hover": { backgroundColor: "#36373a" },
           }}
         >
-          <ArrowBackIosIcon sx={{ color: "#9aa0a6", fontSize: "15px", ml: "2px", mr: "-2px" }} />
+          <ArrowBackIosIcon
+            sx={{ color: "#9aa0a6", fontSize: "15px", ml: "2px", mr: "-2px" }}
+          />
         </IconButton>
       )}
 

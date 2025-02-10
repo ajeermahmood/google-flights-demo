@@ -15,6 +15,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import CustomButton from "./CustomButton";
 import DrawerComponent from "./Drawer";
+import Link from "next/link";
 
 const buttons = [
   { icon: <BackpackIcon />, text: "Travel", active: false },
@@ -59,13 +60,15 @@ export default function AppBarComponent() {
             <MenuIcon />
           </IconButton>
           <div className="flex h-[48px] items-center pr-[30px]">
-            <Image
-              src={"/images/googlelogo_light_clr_74x24px.svg"}
-              height={24}
-              width={74}
-              alt="Google Logo"
-              className="h-[24px] w-[74px] mb-[-4px] select-none"
-            />
+            <Link href={"/"}>
+              <Image
+                src={"/images/googlelogo_light_clr_74x24px.svg"}
+                height={24}
+                width={74}
+                alt="Google Logo"
+                className="h-[24px] w-[74px] mb-[-4px] select-none"
+              />
+            </Link>
           </div>
           <Stack
             direction="row"
