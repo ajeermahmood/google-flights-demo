@@ -9,6 +9,7 @@ import {
   CardContent,
   Grid,
   Stack,
+  useMediaQuery,
 } from "@mui/material";
 import CustomButton from "./CustomButton";
 
@@ -44,6 +45,7 @@ const destinations = [
 ];
 
 export default function FlightsForYou() {
+  const isMobileScreen = useMediaQuery("(max-width:435px)");
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
@@ -51,11 +53,36 @@ export default function FlightsForYou() {
       </Typography>
 
       {/* City Filter Buttons */}
-      <Stack direction="row" spacing={1} sx={{ mb: 3, mt: 2 }}>
-        {["Dubai", "Abu Dhabi", "Ras Al Khaimah", "Al Ain"].map((city) => (
-          <CustomButton active={city === "Dubai"} text={city} key={city} />
-        ))}
-      </Stack>
+      <Box
+        className="scrollbar-hide"
+        sx={{
+          "@media (max-width: 400px)": {
+            minWidth: "100%",
+            overflowX: "auto",
+          },
+        }}
+      >
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{
+            mb: 3,
+            mt: 2,
+            "@media (max-width: 400px)": {
+              minWidth: "400px",
+            },
+          }}
+        >
+          {["Dubai", "Abu Dhabi", "Ras Al Khaimah", "Al Ain"].map((city) => (
+            <CustomButton
+              active={city === "Dubai"}
+              text={city}
+              key={city}
+              fontSize={isMobileScreen ? 12 : 14}
+            />
+          ))}
+        </Stack>
+      </Box>
 
       {/* Map Section */}
       <Paper
@@ -89,9 +116,38 @@ export default function FlightsForYou() {
       </Paper>
 
       {/* Destinations Section */}
-      <Grid container justifyContent="space-between" sx={{ mt: 3, flexWrap: "nowrap", pb: 2 }}>
+      <Grid
+        container
+        justifyContent="space-between"
+        sx={{
+          mt: 3,
+          flexWrap: "nowrap",
+          pb: 2,
+          "@media (max-width: 768px)": {
+            flexDirection: "column", // Stack items vertically
+            alignItems: "center",
+          },
+        }}
+      >
         {destinations.map((dest) => (
-          <Grid item key={dest.city} sx={{ minWidth: 225, maxHeight: 225 }}>
+          <Grid
+            item
+            key={dest.city}
+            sx={{
+              minWidth: 225,
+              maxHeight: 225,
+              "@media (max-width: 1024px)": {
+                minWidth: "165px",
+              },
+              "@media (max-width: 768px)": {
+                width: "100%", // Full width for better layout
+                display: "flex",
+                flexDirection: "row", // Image on left, content on right
+                alignItems: "center",
+                padding: "0 0 15px",
+              },
+            }}
+          >
             <Card
               sx={{
                 bgcolor: "transparent",
@@ -99,11 +155,21 @@ export default function FlightsForYou() {
                 borderRadius: 3,
                 boxShadow: "none",
                 backgroundImage: "none",
+                width: "100%",
+                "@media (max-width: 768px)": {
+                  display: "flex",
+                  flexDirection: "row", // Make card horizontal
+                  alignItems: "start",
+                },
                 "& .MuiCardContent-root": {
                   padding: "15px 0 0 0",
+                  "@media (max-width: 768px)": {
+                    padding: "5px 0 0 8px",
+                  },
                 },
               }}
             >
+              {/* Image Section */}
               <CardMedia
                 component="img"
                 image={dest.image}
@@ -111,11 +177,35 @@ export default function FlightsForYou() {
                 sx={{
                   height: "120px !important",
                   borderRadius: "16px",
+                  "@media (max-width: 768px)": {
+                    width: "300px",
+                    height: "100px",
+                    marginRight: "10px",
+                  },
+                  "@media (max-width: 550px)": {
+                    width: "200px",
+                    height: "100px",
+                    marginRight: "10px",
+                  },
+                  "@media (max-width: 435px)": {
+                    width: "150px",
+                    height: "100px",
+                    marginRight: "10px",
+                  },
                 }}
               />
-              <CardContent>
+
+              {/* Content Section */}
+              <CardContent
+                sx={{
+                  flex: 1,
+                  "@media (max-width: 768px)": {
+                    padding: "0 10px", // Adjust padding
+                  },
+                }}
+              >
                 <Stack direction="row" justifyContent="space-between">
-                  <Typography fontSize={16}>{dest.city}</Typography>  
+                  <Typography fontSize={16}>{dest.city}</Typography>
                   <Typography fontSize={14} sx={{ fontWeight: "bold" }}>
                     {dest.price}
                   </Typography>

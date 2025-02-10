@@ -1,51 +1,20 @@
 "use client";
-import SearchForm from "@/components/SearchForm";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import { Box, Paper, Button } from "@mui/material";
-import Image from "next/image";
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import AppBarComponent from "@/components/Appbar";
-import FlightTable from "@/components/FlightTable";
-import PriceInsights from "@/components/FlightInsights";
-import FlightsForYou from "@/components/FlightsForYou";
+import CityCarousel from "@/components/CityCarousal";
+import FAQ from "@/components/FAQ";
 import FlightInsights from "@/components/FlightInsights";
+import FlightsForYou from "@/components/FlightsForYou";
+import Footer from "@/components/Footer";
+import PopularRoutesLinks from "@/components/PopularRoutes";
+import SearchForm from "@/components/SearchForm";
+import { Box, Paper } from "@mui/material";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import Image from "next/image";
 
 const darkTheme = createTheme({ palette: { mode: "dark" } });
 const lightTheme = createTheme({ palette: { mode: "light" } });
-
-const sampleFlights = [
-  {
-    airline: "Emirates",
-    departure: "Dubai (DXB) - 10:30 AM",
-    arrival: "London (LHR) - 2:45 PM",
-    price: 2200,
-  },
-  {
-    airline: "Qatar Airways",
-    departure: "Dubai (DXB) - 1:15 PM",
-    arrival: "Doha (DOH) - 2:00 PM",
-    price: 800,
-  },
-  {
-    airline: "Etihad Airways",
-    departure: "Abu Dhabi (AUH) - 3:45 PM",
-    arrival: "New York (JFK) - 11:20 PM",
-    price: 3500,
-  },
-  {
-    airline: "Turkish Airlines",
-    departure: "Dubai (DXB) - 5:00 AM",
-    arrival: "Istanbul (IST) - 9:30 AM",
-    price: 1800,
-  },
-  {
-    airline: "Lufthansa",
-    departure: "Dubai (DXB) - 11:00 PM",
-    arrival: "Frankfurt (FRA) - 4:30 AM",
-    price: 2100,
-  },
-];
 
 export default function Home() {
   return (
@@ -53,7 +22,7 @@ export default function Home() {
       <ThemeProvider theme={darkTheme}>
         <AppBarComponent />
         {/* Hero Section */}
-        <Box className="w-full flex flex-col items-center text-center mx-auto mb-10">
+        <Box className="w-full flex flex-col items-center text-center mx-auto mb-5 sm:mb-10">
           <Image
             src="/images/main_banner_dark.svg"
             alt="Hero Image"
@@ -69,6 +38,17 @@ export default function Home() {
             fontWeight={400}
             sx={{
               marginTop: "-70px",
+              "@media (max-width: 768px)": {
+                marginTop: "-50px",
+              },
+              "@media (max-width: 720px)": {
+                fontSize: "36px",
+                marginTop: "-40px",
+              },
+              "@media (max-width: 425px)": {
+                fontSize: "34px",
+                marginTop: "-15px",
+              },
             }}
           >
             Flights
@@ -79,30 +59,37 @@ export default function Home() {
         <Container
           sx={{
             maxWidth: "1024px !important",
+            "@media (max-width: 1024px)": {
+              maxWidth: "768px !important",
+            },
+            "@media (max-width: 768px)": {
+              maxWidth: "100% !important", // Full width for small screens
+            },
           }}
         >
-          <Paper
-            elevation={6}
-            className="p-6 sm:p-4 w-full"
-            sx={{
-              borderRadius: "8px",
-              backgroundColor: "#36373a !important",
-              backgroundImage: "none !important",
-            }}
-          >
-            <SearchForm />
-          </Paper>
+          <SearchForm />
 
           <div className="w-full flex flex-col text-start mt-[3rem]">
             <FlightsForYou />
           </div>
-          <div className="w-full flex flex-col text-start mt-[3rem]">
+          <div className="w-full flex flex-col text-start mt-[2rem]">
             <FlightInsights />
           </div>
+          <div className="w-full flex flex-col text-start mt-[1rem]">
+            <CityCarousel />
+          </div>
+          <div className="w-full flex flex-col text-start mt-[2rem]">
+            <FAQ />
+          </div>
+          <div className="w-full flex flex-col text-start mt-[2rem]">
+            <PopularRoutesLinks />
+          </div>
+          <footer className="">
+            <Footer />
+          </footer>
         </Container>
 
         {/* Footer */}
-        <footer className="mt-16 flex gap-6 flex-wrap items-center justify-center"></footer>
       </ThemeProvider>
     </div>
   );

@@ -5,6 +5,7 @@ interface CustomButtonProps {
   icon?: ReactNode;
   text: string;
   active: boolean;
+  fontSize?: number;
   onClick?: () => void;
 }
 
@@ -12,6 +13,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   icon,
   text,
   active,
+  fontSize,
   onClick,
 }) => {
   return (
@@ -20,6 +22,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       variant="outlined"
       startIcon={icon ? icon : null}
       sx={{
+        fontSize: fontSize ? fontSize : null,
         color: active ? "#8ab4f8" : "unset",
         borderRadius: "20px",
         borderColor: "#3c4043",
