@@ -9,8 +9,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Image from "next/image";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const formatDuration = (minutes: number) => {
   const hours = Math.floor(minutes / 60);
@@ -28,15 +27,10 @@ const calculateArrivalTime = (durationInMinutes: number) => {
 };
 
 export default function FlightsTable() {
-  const dispatch = useDispatch();
   const loading = useSelector((state: RootState) => state.flightsData.loading);
   const flightsData: FlightsData | null = useSelector(
     (state: RootState) => state.flightsData.flights
   );
-
-  useEffect(() => {
-    console.log(flightsData);
-  }, [flightsData]);
 
   return (
     <Box>
