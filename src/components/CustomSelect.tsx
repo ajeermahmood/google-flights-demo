@@ -12,6 +12,8 @@ interface CustomSelectProps {
   options: { label: any; value: any }[];
   className?: string;
   startAdornment?: React.JSX.Element;
+  minWidth?: number;
+  height?: number;
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -20,11 +22,15 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
   className,
   startAdornment,
+  minWidth,
+  height,
 }) => {
   return (
     <FormControl
       variant="standard"
       sx={{
+        minWidth: minWidth,
+        height: height,
         m: 1,
         margin: "0 !important",
         "& .MuiInputBase-root": {

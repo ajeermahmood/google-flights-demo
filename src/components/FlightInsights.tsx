@@ -147,7 +147,6 @@ export default function FlightInsights() {
             mt: 2,
           }}
         >
-          {/* Left Side Tabs */}
           <Tabs
             orientation="vertical"
             value={selectedTab}
@@ -156,7 +155,6 @@ export default function FlightInsights() {
               "@media (max-width: 1024px)": {
                 maxWidth: 280,
               },
-              // borderRight: "none",
               overflow: "visible",
 
               "& .MuiTabs-indicator": {
@@ -188,8 +186,8 @@ export default function FlightInsights() {
                       alignItems: "start",
                       gap: 1,
                       minHeight: "150px",
-                      position: "relative", // allows absolute positioning of the arrow
-                      overflow: "visible", // ensure arrow isn't clipped
+                      position: "relative", 
+                      overflow: "visible", 
                     }}
                   >
                     <Stack direction="row" spacing={2} alignItems="start">
@@ -237,7 +235,6 @@ export default function FlightInsights() {
             ))}
           </Tabs>
 
-          {/* Right Side Content */}
           <Paper
             sx={{
               flex: 1,

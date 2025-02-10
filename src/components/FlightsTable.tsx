@@ -72,15 +72,19 @@ export default function FlightsTable() {
                 </TableRow>
               ))
             ) : flightsData?.data?.itineraries?.length === 0 ? (
-              <Box
-                display="flex"
-                width="100%"
-                height="15rem"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Typography variant="h6">No Results Found :/</Typography>
-              </Box>
+              <TableRow>
+                <TableCell colSpan={6}>
+                  <Box
+                    display="flex"
+                    width="100%"
+                    height="15rem"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Typography variant="h6">No Results Found :/</Typography>
+                  </Box>
+                </TableCell>
+              </TableRow>
             ) : (
               flightsData?.data?.itineraries?.map((itinerary, index) => {
                 const firstLeg = itinerary.legs[0];

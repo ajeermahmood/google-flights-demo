@@ -16,31 +16,36 @@ export default function Home() {
     <div className="min-h-screen flex flex-col items-center text-white">
       <AppBarComponent />
       <Box className="w-full flex flex-col items-center text-center mx-auto mb-5 sm:mb-10">
-        <Image
-          src="/images/main_banner_dark.svg"
-          alt="Hero Image"
-          width={500}
-          height={300}
-          className="w-full max-w-[1248px] select-none"
-        />
+        <div
+          className="relative w-full max-w-[1248px]"
+          style={{ paddingTop: "24.04%" }}
+        >
+          <Image
+            src="/images/main_banner_dark.svg"
+            alt="Hero Image"
+            fill
+            priority
+            className="select-none object-cover"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+            }}
+          />
+        </div>
+
         <Typography
           variant="h2"
           component="h1"
-          className="font-bold"
-          fontSize={56}
-          fontWeight={400}
+          className="font-bold relative z-[1]"
           sx={{
-            marginTop: "-70px",
-            "@media (max-width: 768px)": {
-              marginTop: "-50px",
-            },
-            "@media (max-width: 720px)": {
-              fontSize: "36px",
-              marginTop: "-40px",
-            },
-            "@media (max-width: 425px)": {
-              fontSize: "34px",
-              marginTop: "-15px",
+            fontSize: { xs: 34, sm: 36, md: 56 },
+            marginTop: { xs: "-15px", sm: "-40px", md: "-70px" },
+            lineHeight: 1,
+            "&::before": {
+              content: '""',
+              display: "block",
+              height: { xs: "15px", sm: "20px", md: "30px" },
             },
           }}
         >
@@ -55,7 +60,7 @@ export default function Home() {
             maxWidth: "768px !important",
           },
           "@media (max-width: 768px)": {
-            maxWidth: "100% !important", 
+            maxWidth: "100% !important",
           },
         }}
       >

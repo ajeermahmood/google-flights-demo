@@ -4,7 +4,7 @@ import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-// Cities data
+// Cities demo data
 const cities = [
   { name: "Dubai", image: "/images/locations/dubai.jpg" },
   { name: "Doha", image: "/images/locations/doha.jpg" },
@@ -22,7 +22,6 @@ const cities = [
   { name: "Istanbul", image: "/images/locations/istanbul.jpg" },
 ];
 
-// Single city card component
 const CityCard = ({ city }: { city: { name: string; image: string } }) => (
   <Box
     sx={{
@@ -34,7 +33,6 @@ const CityCard = ({ city }: { city: { name: string; image: string } }) => (
       flexShrink: 0,
     }}
   >
-    {/* The image */}
     <Box
       component="img"
       src={city.image}
@@ -45,7 +43,6 @@ const CityCard = ({ city }: { city: { name: string; image: string } }) => (
         objectFit: "cover",
       }}
     />
-    {/* Black overlay for title */}
     <Box
       sx={{
         position: "absolute",
@@ -57,7 +54,6 @@ const CityCard = ({ city }: { city: { name: string; image: string } }) => (
       }}
     />
 
-    {/* City name at the bottom left */}
     <Box
       sx={{
         position: "absolute",
@@ -73,7 +69,6 @@ const CityCard = ({ city }: { city: { name: string; image: string } }) => (
   </Box>
 );
 
-// Main carousel component
 export default function CityCarousel() {
   const itemsPerPage = 7;
   const [currentPage, setCurrentPage] = useState(0);
@@ -94,16 +89,15 @@ export default function CityCarousel() {
         Popular destinations from Dubai
       </Typography>
 
-      {/* Scrollable Row on Small Screens */}
       <Box
-        className="overflow-x-auto scrollbar-hide" // Tailwind scrollbar-hide
+        className="overflow-x-auto scrollbar-hide"
         sx={{
           display: "flex",
           gap: 1,
           mt: 2,
           justifyContent: isSmallScreen ? "flex-start" : "space-between",
           flexWrap: isSmallScreen ? "nowrap" : "wrap",
-          paddingBottom: isSmallScreen ? "10px" : "0", // Ensure space for scroll
+          paddingBottom: isSmallScreen ? "10px" : "0",
         }}
       >
         {(isSmallScreen ? cities : currentCities).map((city, index) => (
@@ -111,7 +105,6 @@ export default function CityCarousel() {
         ))}
       </Box>
 
-      {/* Pagination Controllers (Hidden on Small Screens) */}
       {!isSmallScreen && currentPage > 0 && (
         <IconButton
           className="carousel-controller"

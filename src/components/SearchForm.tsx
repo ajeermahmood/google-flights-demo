@@ -12,7 +12,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
-// import DatePicker from "@mui/lab/DatePicker";
 import {
   setFlightsData,
   setFlightsDataLoading,
@@ -129,7 +128,6 @@ export default function SearchForm({ searchPage }: { searchPage: boolean }) {
       const key = JSON.stringify(params);
 
       try {
-        // Always check cache first
         if (flightSearchCache.has(key)) {
           dispatch(setFlightsData(flightSearchCache.get(key)));
           dispatch(setFlightsDataLoading(false));
@@ -161,7 +159,6 @@ export default function SearchForm({ searchPage }: { searchPage: boolean }) {
           dispatch(setFlightsDataLoading(true));
           const decodedParams = JSON.parse(atob(decodeURIComponent(tfs)));
 
-          // Batch all state updates together
           setFromAirport(decodedParams.from);
           setToAirport(decodedParams.to);
           setDepartureDate(dayjs(decodedParams.departureDate));
@@ -221,7 +218,6 @@ export default function SearchForm({ searchPage }: { searchPage: boolean }) {
       }
     >
       <div className="flex flex-col gap-3">
-        {/* Trip Type & Passengers/Class Row */}
         <Grid container spacing={1}>
           <Grid
             item
@@ -302,9 +298,7 @@ export default function SearchForm({ searchPage }: { searchPage: boolean }) {
           </Grid>
         </Grid>
 
-        {/* Search Fields Row */}
         <Grid container spacing={2}>
-          {/* FROM AIRPORT SEARCH */}
           <Grid item xs={12} md={4}>
             <Autocomplete
               freeSolo
@@ -352,7 +346,6 @@ export default function SearchForm({ searchPage }: { searchPage: boolean }) {
             />
           </Grid>
 
-          {/* TO AIRPORT SEARCH */}
           <Grid item xs={12} md={4}>
             <Autocomplete
               freeSolo
@@ -399,7 +392,6 @@ export default function SearchForm({ searchPage }: { searchPage: boolean }) {
             />
           </Grid>
 
-          {/* DEPARTURE DATE */}
           <Grid item xs={12} md={4}>
             <Box display={ticketType === "round-trip" ? "flex" : "block"}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>

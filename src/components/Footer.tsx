@@ -45,7 +45,6 @@ const Footer = () => {
         />
       </Stack>
 
-      {/* Text Section */}
       <Typography variant="body2" color="#9aa0a6" align="center" sx={{ mb: 2 }}>
         Current language and currency options applied: English (United States) -
         United Arab Emirates - AED
@@ -74,7 +73,6 @@ const Footer = () => {
         conditions with the service providers before booking.
       </Typography>
 
-      {/* Footer Links */}
       <Stack
         direction="row"
         justifyContent="center"

@@ -52,7 +52,6 @@ export default function FlightsForYou() {
         Find cheap flights from Dubai to anywhere
       </Typography>
 
-      {/* City Filter Buttons */}
       <Box
         className="scrollbar-hide"
         sx={{
@@ -84,7 +83,6 @@ export default function FlightsForYou() {
         </Stack>
       </Box>
 
-      {/* Map Section */}
       <Paper
         sx={{
           width: "100%",
@@ -115,7 +113,6 @@ export default function FlightsForYou() {
         </Button>
       </Paper>
 
-      {/* Destinations Section */}
       <Grid
         container
         justifyContent="space-between"
@@ -124,7 +121,7 @@ export default function FlightsForYou() {
           flexWrap: "nowrap",
           pb: 2,
           "@media (max-width: 768px)": {
-            flexDirection: "column", // Stack items vertically
+            flexDirection: "column",
             alignItems: "center",
           },
         }}
@@ -140,9 +137,9 @@ export default function FlightsForYou() {
                 minWidth: "165px",
               },
               "@media (max-width: 768px)": {
-                width: "100%", // Full width for better layout
+                width: "100%",
                 display: "flex",
-                flexDirection: "row", // Image on left, content on right
+                flexDirection: "row",
                 alignItems: "center",
                 padding: "0 0 15px",
               },
@@ -158,7 +155,7 @@ export default function FlightsForYou() {
                 width: "100%",
                 "@media (max-width: 768px)": {
                   display: "flex",
-                  flexDirection: "row", // Make card horizontal
+                  flexDirection: "row",
                   alignItems: "start",
                 },
                 "& .MuiCardContent-root": {
@@ -169,7 +166,6 @@ export default function FlightsForYou() {
                 },
               }}
             >
-              {/* Image Section */}
               <CardMedia
                 component="img"
                 image={dest.image}
@@ -195,12 +191,11 @@ export default function FlightsForYou() {
                 }}
               />
 
-              {/* Content Section */}
               <CardContent
                 sx={{
                   flex: 1,
                   "@media (max-width: 768px)": {
-                    padding: "0 10px", // Adjust padding
+                    padding: "0 10px",
                   },
                 }}
               >

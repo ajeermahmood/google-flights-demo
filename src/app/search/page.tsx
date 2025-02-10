@@ -1,4 +1,3 @@
-"use client";
 import AppBarComponent from "@/components/Appbar";
 import FlightsTable from "@/components/FlightsTable";
 import Footer from "@/components/Footer";
@@ -17,14 +16,14 @@ export default function SearchPage() {
             maxWidth: "768px !important",
           },
           "@media (max-width: 768px)": {
-            maxWidth: "100% !important", // Full width for small screens
+            maxWidth: "100% !important",
           },
         }}
       >
         <SearchForm searchPage={true} />
 
         <FlightsTable />
-        <Footer/>
+        <Footer />
       </Container>
     </div>
   );
